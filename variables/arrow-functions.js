@@ -130,6 +130,11 @@ console.log(sum3(1,2)); // NaN
 // In an event handler, 
 // - 'this' refers to the element that is handling the event.
 
+// In an arrow function:
+// - 'this' refers to the enclosing lexical context (static binding).
+// - Arrow functions do not have their own 'this' context.
+// - They inherit 'this' from the parent scope at the time they are defined.
+
 
 this.name = 'Kamal';
 
