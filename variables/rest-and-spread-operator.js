@@ -95,3 +95,69 @@ const obj = { a: 1, b: 2, c: 3 };
 // add(...obj); // error
 add(...Object.values(obj)); // 6
 
+
+
+/* ---------------------- rest operator ---------------------------- */
+
+/* ========= to collect / handle function parameter length ========= */
+
+const arrayA = [1, 2, 3];
+const arrayB = [1, 2, 3, 4, 5, 6];
+
+function addAll(a, b, c) {
+    console.log(a + b + c); // 6
+}
+
+addAll(...arrayA); // 6
+addAll(...arrayB); // 6
+
+function addAll2(...args) {
+    let sum = 0;
+    for (let arg of args) {
+        sum += arg;
+    }
+    console.log(sum); // 6
+}
+
+addAll2(...arrayA); // 6
+addAll2(...arrayB); // 21
+
+
+
+
+
+/* ================== Array Destructuring ================ */
+
+const myArray1 = [1, 2, 3, 4, 5];
+const [first, second, ...rest_args] = myArray1;
+
+console.log(first); // 1
+console.log(second); // 2
+console.log(rest_args); // [ 3, 4, 5 ]
+console.log(rest_args[0]); // 3
+console.log(rest_args[1]); // 4
+
+const [first2, second2, rest_args2] = ['a', 'b', 'c', 'd', 'e', 'f'];
+console.log(first2); // a
+console.log(second2); // b
+console.log(rest_args2); // c
+console.log(rest_args2[0]); // c
+console.log(rest_args2[1]); // undefined
+
+
+/* ================== Object Destructuring ================ */
+const myObject = {
+    name: 'John',
+    age: 30,
+    city: 'New York',
+    country: 'USA'
+};
+const { name, age, ...rest } = myObject;
+console.log(name); // John
+console.log(age); // 30
+console.log(rest); // { city: 'New York' , country: 'USA' }
+
+const { name: n, age: a, ...rest_obj } = myObject;
+console.log(n); // John
+console.log(a); // 30
+console.log(rest_obj); // { city: 'New York' , country: 'USA' }
